@@ -35,11 +35,17 @@ snippets.prototype = {
     existWidget : function(){
         var path = $options.path;
 
-        $fs.exists(path, function(res){
+        $fs.exists("fis-conf.js", function(res){
             if(res == true){
-                console.log("[Error] this path:"+path+" exists");
+                $fs.exists(path, function(res){
+                    if(res == true){
+                        console.log("[Error-1001] This path:"+path+" exists");
+                    }else{
+                        snippets.fn.appFolder(path);
+                    }
+                });
             }else{
-                snippets.fn.appFolder(path);
+                console.log("[Error-1002] In this folder that can't build widget or page folders");
             }
         });
     },
@@ -86,11 +92,9 @@ snippets.prototype = {
      * @param  {String} text [字符串]
      */
     firstUpper : function(text){
-        console.log(text);
         text = text.replace(/(^|\s+)\w/g,function(s){
             return s.toUpperCase();
         });
-        console.log(text);
         return text;
     },
 
