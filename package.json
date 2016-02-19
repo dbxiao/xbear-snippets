@@ -1,7 +1,7 @@
 {
   "name": "xbear-snippets",
   "version": "0.0.1",
-  "description": "auto file snippets tools",
+  "description": "auto file snippets command",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/dbxiao/xbear-snippets.git"
   },
   "keywords": [
-    "web develop, stack develop, hybrid develop"
+    "auto build folder and static files, stack develop"
   ],
   "author": {
     "name": "dbxiao"
