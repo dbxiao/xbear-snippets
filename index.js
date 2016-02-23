@@ -104,7 +104,7 @@ snippets.prototype = {
      */
     addFile : function(_path){
         var str = "";
-        var x;
+        var x, y;
         var path= $options.snippetsName;
         
 
@@ -114,12 +114,12 @@ snippets.prototype = {
             if($options.fileType[x] == "html" || $options.fileType[x] == "css"){
                 files = snippets.fn.extTpl(files, $options.snippetsName);
             }else if($options.fileType[x] == "js"){
-                let fileName = $options.snippetsName.split("-");
-                for(let x in fileName){
-                    if(x == 0){
+                var fileName = $options.snippetsName.split("-");
+                for(y in fileName){
+                    if(y == 0){
                         continue;
                     }else{
-                        fileName[x] = snippets.fn.firstUpper(fileName[x]);
+                        fileName[y] = snippets.fn.firstUpper(fileName[y]);
                     }
                 };
                 fileName = fileName.join("");
