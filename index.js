@@ -10,15 +10,17 @@ var $options = {};
 var $fs = require("fs");
 var $path = require("path");
 
-function snippets(_options){
+function snippets(avgs){
     $options = {
-        snippetsType   : _options.snippetsType,   // 操作类型 [widget]
-        snippetsAction : _options.snippetsAction, // 操作时间 [add]
-        snippetsName   : _options.snippetsName,   // 文件名称 [wgt]
-        path           : _options.snippetsType +"/"+_options.snippetsName, // 文件路径 [widget/wgt]
+        snippetsType   : avgs[3],   // 类型 [widget]
+        snippetsAction : avgs[4],   // 事件 [add，remove]
+        snippetsName   : avgs[5],   // 文件名称 [wgt]
+        path           : avgs[3] +"/"+avgs[5], // 文件路径 [widget/wgt]
 
         fileType       : ["html", "js", "css"]    // 操作文件属性
     };
+
+    console.log($options);
 
     snippets.fn.existWidget();
 }
