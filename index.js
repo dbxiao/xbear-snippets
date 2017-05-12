@@ -12,17 +12,20 @@ var $path = require("path");
 
 function snippets(avgs){
     $options = {
-        snippetsType   : avgs[3],   // 类型 [widget]
-        snippetsAction : avgs[4],   // 事件 [add，remove]
-        snippetsName   : avgs[5],   // 文件名称 [wgt]
-        path           : avgs[3] +"/"+avgs[5], // 文件路径 [widget/wgt]
+        snippetsType   : avgs[2],   // 类型 [widget]
+        snippetsAction : avgs[3],   // 事件 [add，remove]
+        snippetsName   : avgs[4],   // 文件名称 [wgt]
+        path           : avgs[2] +"/"+avgs[4], // 文件路径 [widget/wgt]
 
         fileType       : ["html", "js", "css"]    // 操作文件属性
     };
 
-    console.log($options);
 
-    snippets.fn.existWidget();
+
+    snippets.fn.checkInput(function(){
+        snippets.fn.existWidget();    
+    });
+    
 }
 
 /**
@@ -30,6 +33,35 @@ function snippets(avgs){
  * @return {[type]} [description]
  */
 snippets.prototype = {
+
+    checkInput: function(callback){
+        if($options.snippetsType == "-w" || $options.snippetsType == "widget"){
+            $options.snippetsType = "widget";
+            $options.path = $options.snippetsType + "/" + $options.snippetsName;
+        }
+
+        if($options.snippetsType == "-p" || $options.snippetsType == "page"){
+            $options.snippetsType = "page";
+            $options.path = $options.snippetsType + "/" + $options.snippetsName;
+        }
+
+        if($options.snippetsType != "page" && $options.snippetsType != "widget"){
+            console.log("[Error] please input snippets type {widget} or {page}");
+            return false;
+        }
+
+        if($options.snippetsAction != "add"){
+            console.log("[Error] please input snippets action {add} or {remove}");
+            return false;
+        }  
+
+        if($options.snippetsName == undefined){
+            console.log("[Error] please input folder name ");
+            return false;
+        }
+
+        callback();
+    },
 
     /**
      * [existWidget description]
@@ -108,6 +140,11 @@ snippets.prototype = {
         var str = "";
         var x, y;
         var path= $options.snippetsName;
+
+        if(!path){
+            console.log("[Error] please input widget or page name!");
+            return false;
+        }
         
 
         for(x in $options.fileType){

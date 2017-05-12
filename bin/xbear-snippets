@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var package = require('../package.json');
+var index = require("../index.js");
+
+program
+	.version(package.version)
+	.option('-w, --widget', 'add widget snippets')
+	.option('-p, --page', 'add page file snippets')
+    .parse(process.argv);
+ 
+
+if(program.widget) index(process.argv);
+if(program.page) index(process.argv);
+
+

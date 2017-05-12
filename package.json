@@ -1,20 +1,26 @@
 {
-  "name": "xbear-snippets",
-  "version": "0.0.6",
-  "description": "auto file snippets command",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dbxiao/xbear-snippets.git"
-  },
-  "keywords": [
-    "auto build folder and static files, stack develop"
-  ],
-  "author": {
-    "name": "dbxiao"
-  },
-  "license": "ISC"
+    "name": "xbear-snippets",
+    "version": "0.0.7",
+    "description": "auto file snippets command",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "bin": {
+        "xbear-snippets": "./bin/xbear-snippets"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dbxiao/xbear-snippets.git"
+    },
+    "keywords": [
+        "auto build folder and static files, stack develop"
+    ],
+    "author": {
+        "name": "dbxiao"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "commander": "2.9.0"
+    }
 }
